@@ -1,13 +1,24 @@
 import { Request, Response } from "express";
+import LinkModel from "../../schemas/LinkSchema";
 
-const deleteLink = (req: Request, res: Response) => {
+const deleteLink = async (req: Request, res: Response) => {
   try {
     const userId = res.locals.userId;
     const linkId = req.params.id;
 
-    // find user in db with id = userId
-    // find & remove link with linkId
-    return res.status(200).json(`deleteLink with id ${linkId}`);
+    const linkToDelete = await LinkModel.findOne({
+      userId,
+      _id: linkId,
+    }).exec();
+    if (!linkToDelete) {
+      return res
+        .status(404)
+        .json({ errorMessage: `Link with id ${linkId} doesn't exist` });
+    }
+
+    await linkToDelete.deleteOne();
+
+    return res.status(200).json(`Deleted link with id ${linkId}`);
   } catch (e) {
     console.log(e);
     return res
