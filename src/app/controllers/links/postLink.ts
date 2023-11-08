@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Link } from "../../models/Link";
 import { isObjectValid } from "../../helpers/isObjectValid";
 import { LinkBaseData } from "../../models/Link";
-import LinkModel, { ICreateLink } from "../../schemas/LinkSchema";
+import LinkModel from "../../schemas/LinkSchema";
 
 const postLink = async (req: Request, res: Response) => {
   try {

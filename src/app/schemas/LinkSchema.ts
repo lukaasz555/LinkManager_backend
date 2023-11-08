@@ -2,7 +2,7 @@ import { DateTime } from "luxon";
 import { Link } from "../models/Link";
 import { Schema, model } from "mongoose";
 
-export interface ICreateLink {
+export interface ILinkBaseData {
   title: string;
   url: string;
   categoriesIds: number[];
@@ -11,7 +11,7 @@ export interface ICreateLink {
   userId: number;
 }
 
-const schema = new Schema<ICreateLink>(
+const schema = new Schema<ILinkBaseData>(
   {
     title: {
       type: String,
@@ -44,5 +44,5 @@ const schema = new Schema<ICreateLink>(
   }
 );
 
-const LinkModel = model<ICreateLink>("Link", schema);
+const LinkModel = model<ILinkBaseData>("Link", schema);
 export default LinkModel;
