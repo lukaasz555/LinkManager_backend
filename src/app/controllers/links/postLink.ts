@@ -19,19 +19,11 @@ const postLink = async (req: Request, res: Response) => {
     }
 
     const newLink = new LinkModel();
-    Object.assign(newLink, req.body);
-    // const newLinkData = {
-    //   categoriesIds: req.body.categoriesIds,
-    //   isFavorite: req.body.isFavorite,
-    //   notes: req.body.notes,
-    //   title: req.body.title,
-    //   url: req.body.url,
-    // };
-    // const newLink = new LinkModel(newLinkData);
+    Object.assign(newLink, req.body, { userId: res.locals.userId });
 
     const savedItem = await newLink.save();
 
-    return res.status(200).json(savedItem);
+    return res.status(201).json(savedItem);
   } catch (e) {
     console.log(e);
     return res.status(500).json({ errorMessage: "PostLink controller error" });

@@ -8,6 +8,7 @@ export interface ICreateLink {
   categoriesIds: number[];
   isFavorite: boolean;
   notes: string | null;
+  userId: number;
 }
 
 const schema = new Schema<ICreateLink>(
@@ -31,6 +32,10 @@ const schema = new Schema<ICreateLink>(
     notes: {
       type: String,
       required: false,
+    },
+    userId: {
+      type: Number,
+      required: true,
     },
   },
 

@@ -4,6 +4,7 @@ import { Link } from "../../models/Link";
 
 const getLinks = (req: Request, res: Response) => {
   try {
+    const { userId } = res.locals;
     let filteredLinks = mockLinks;
 
     if (req.query.categoryId) {
