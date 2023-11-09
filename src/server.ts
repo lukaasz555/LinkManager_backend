@@ -2,6 +2,7 @@ import express, { Application, Router } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import authRouter from "./app/routes/auth";
 import linksRouter from "./app/routes/links";
 
 const app = express();
@@ -21,6 +22,7 @@ async function run() {
 
 run().catch((e: Error) => console.log(e));
 
+app.use("/auth", authRouter);
 app.use("/links", linksRouter);
 
 app.listen(PORT, () => {
