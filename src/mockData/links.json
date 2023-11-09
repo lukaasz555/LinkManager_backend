@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "title": "T, K, V in TypeScript",
+    "url": "https://example.com/title-programming-finance-development",
+    "categoriesIds": [1, 3, 5],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": "I created this link when I was testing this app with some mock data.",
+    "readAt": null
+  },
+  {
+    "id": 2,
+    "title": "New objects without reference to the original object",
+    "url": "https://example.com/title-finance-foreign-lang",
+    "categoriesIds": [2],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": true,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 3,
+    "title": "React basic hooks (useState, useEffect, useContext)",
+    "url": "https://example.com/title-development-computer-sci",
+    "categoriesIds": [3],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": true,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 4,
+    "title": "foreign lang",
+    "url": "https://example.com/title-foreign-lang-sports",
+    "categoriesIds": [4],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 5,
+    "title": "computer sci",
+    "url": "https://example.com/title-computer-sci-cooking",
+    "categoriesIds": [5],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 6,
+    "title": "sports",
+    "url": "https://example.com/title-sports-art",
+    "categoriesIds": [6],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 7,
+    "title": "cooking",
+    "url": "https://example.com/title-cooking-technology",
+    "categoriesIds": [7],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 8,
+    "title": "art",
+    "url": "https://example.com/title-art-business",
+    "categoriesIds": [8],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 9,
+    "title": "technology",
+    "url": "https://example.com/title-technology-travel",
+    "categoriesIds": [9],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 10,
+    "title": "business",
+    "url": "https://example.com/title-business-music",
+    "categoriesIds": [10],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 11,
+    "title": "travel",
+    "url": "https://example.com/title-travel-science",
+    "categoriesIds": [11],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 12,
+    "title": "music",
+    "url": "https://example.com/title-music-history",
+    "categoriesIds": [12],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 13,
+    "title": "science",
+    "url": "https://example.com/title-science-food",
+    "categoriesIds": [13],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 14,
+    "title": "history",
+    "url": "https://example.com/title-history-programming",
+    "categoriesIds": [14],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 15,
+    "title": "food",
+    "url": "https://example.com/title-food-finance",
+    "categoriesIds": [15],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 16,
+    "title": "programming",
+    "url": "https://example.com/title-programming-finance",
+    "categoriesIds": [1],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 17,
+    "title": "finance",
+    "url": "https://example.com/title-finance-foreign-lang",
+    "categoriesIds": [2],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 18,
+    "title": "development",
+    "url": "https://example.com/title-development-computer-sci",
+    "categoriesIds": [3],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 19,
+    "title": "foreign lang",
+    "url": "https://example.com/title-foreign-lang-sports",
+    "categoriesIds": [4],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 20,
+    "title": "computer sci",
+    "url": "https://example.com/title-computer-sci-cooking",
+    "categoriesIds": [5],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 21,
+    "title": "sports",
+    "url": "https://example.com/title-sports-art",
+    "categoriesIds": [6],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 22,
+    "title": "cooking",
+    "url": "https://example.com/title-cooking-technology",
+    "categoriesIds": [7],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 23,
+    "title": "art",
+    "url": "https://example.com/title-art-business",
+    "categoriesIds": [8],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 24,
+    "title": "technology",
+    "url": "https://example.com/title-technology-travel",
+    "categoriesIds": [9],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 25,
+    "title": "business",
+    "url": "https://example.com/title-business-music",
+    "categoriesIds": [10],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 26,
+    "title": "travel",
+    "url": "https://example.com/title-travel-science",
+    "categoriesIds": [11],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 27,
+    "title": "music",
+    "url": "https://example.com/title-music-history",
+    "categoriesIds": [12],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 28,
+    "title": "science",
+    "url": "https://example.com/title-science-food",
+    "categoriesIds": [13],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 29,
+    "title": "history",
+    "url": "https://example.com/title-history-programming",
+    "categoriesIds": [14],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  },
+  {
+    "id": 30,
+    "title": "food",
+    "url": "https://example.com/title-food-finance",
+    "categoriesIds": [15],
+    "createdAt": "2023-10-31T12:00:00.000Z",
+    "isFavorite": false,
+    "notes": null,
+    "readAt": null
+  }
+]
