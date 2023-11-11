@@ -22,8 +22,8 @@ async function run() {
 
 run().catch((e: Error) => console.log(e));
 
-app.use("/auth", authRouter);
-app.use("/links", linksRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/links", linksRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
