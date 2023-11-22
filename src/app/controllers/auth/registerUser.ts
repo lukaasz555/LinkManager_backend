@@ -1,7 +1,7 @@
 import { Request, Response, ErrorRequestHandler } from "express";
 import UserModel, { IUserDto, UserDto } from "../../schemas/UserSchema";
 import { ValidationResult, isObjectValid } from "./../../helpers/isObjectValid";
-import { getHashedPassword } from "../../helpers/getHashedPassword";
+import { getHashedPassword } from "../../helpers/auth";
 import { MongooseError } from "mongoose";
 
 const registerUser = async (req: Request, res: Response) => {
