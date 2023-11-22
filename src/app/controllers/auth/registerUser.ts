@@ -30,7 +30,7 @@ const registerUser = async (req: Request, res: Response) => {
       .catch((e: MongooseError) => {
         if (e.message.includes("E11000")) {
           return res
-            .status(422)
+            .status(409)
             .json({ errorMessage: "User with this email already exists" });
         } else {
           return res.status(422).json({ errorMessage: "Validation error - " });

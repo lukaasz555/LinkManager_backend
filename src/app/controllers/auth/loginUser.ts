@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import UserModel from "../../schemas/UserSchema";
 import { validatedPassword } from "../../helpers/auth";
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 
 const loginUser = async (req: Request, res: Response) => {
   try {
@@ -18,7 +20,14 @@ const loginUser = async (req: Request, res: Response) => {
       return res.status(401).json({ errorMessage: "Wrong credentials" });
     }
 
-    const jwtToken = "tokenshouldbegenerated";
+    const tokenSecret = process.env.TOKEN_SECRET || "";
+    const jwtToken = jwt.sign(
+      {
+        sub: user._id,
+        email: user.email,
+      },
+      tokenSecret
+    );
     return res.status(200).json(jwtToken);
   } catch (e) {
     console.log(e);
