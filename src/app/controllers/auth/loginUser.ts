@@ -3,6 +3,8 @@ import UserModel from "../../schemas/UserSchema";
 import { validatedPassword } from "../../helpers/auth";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
+import { generateJwtToken } from "../../helpers/generateJwtToken";
+import { generateRefreshToken } from "../../helpers/generateRefreshToken";
 
 const loginUser = async (req: Request, res: Response) => {
   try {
@@ -20,15 +22,13 @@ const loginUser = async (req: Request, res: Response) => {
       return res.status(401).json({ errorMessage: "Wrong credentials" });
     }
 
-    const tokenSecret = process.env.TOKEN_SECRET || "";
-    const jwtToken = jwt.sign(
-      {
-        sub: user._id,
-        email: user.email,
-      },
-      tokenSecret
-    );
-    return res.status(200).json(jwtToken);
+    const jwtToken = generateJwtToken(user.id, user.email);
+    const refreshToken = generateRefreshToken(user.id, user.email);
+
+    return res.status(200).json({
+      jwtToken,
+      refreshToken,
+    });
   } catch (e) {
     console.log(e);
     return res.status(500).json({ errorMessage: "LoginUser error" });
