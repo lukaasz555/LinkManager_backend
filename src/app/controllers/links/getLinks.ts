@@ -4,6 +4,7 @@ import { Link } from "../../models/Link";
 import LinkModel from "../../schemas/LinkSchema";
 
 const getLinks = async (req: Request, res: Response) => {
+  console.log("i am in getLinks controller somehow?");
   try {
     const searchValue = {};
 
