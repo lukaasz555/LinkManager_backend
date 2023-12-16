@@ -1,29 +1,34 @@
-import { Request, Response } from "express";
-import mockLinks from "../../../mockData/links.json";
-import { Link } from "../../models/Link";
-import LinkModel from "../../schemas/LinkSchema";
+import { Request, Response } from 'express';
+import mockLinks from '../../../mockData/links.json';
+import { Link } from '../../models/Link';
+import LinkModel from '../../schemas/LinkSchema';
+import UserModel from '../../schemas/UserSchema';
 
 const getLinks = async (req: Request, res: Response) => {
-  console.log("i am in getLinks controller somehow?");
-  try {
-    const searchValue = {};
+	try {
+		const user = await UserModel.findById(res.locals.userId);
+		if (!user) {
+			return res.status(404).json({ errorMessage: 'No such a user' });
+		}
 
-    if (req.query.categoryId) {
-      Object.assign(searchValue, { categoriesIds: req.query.categoryId });
-    }
-    if (req.query.favorites) {
-      Object.assign(searchValue, { isFavorite: true });
-    }
+		const searchValue = {};
 
-    const result = await LinkModel.find({
-      userId: res.locals.userId,
-      ...searchValue,
-    });
+		if (req.query.categoryId) {
+			Object.assign(searchValue, { categoriesIds: req.query.categoryId });
+		}
+		if (req.query.favorites) {
+			Object.assign(searchValue, { isFavorite: true });
+		}
 
-    return res.status(200).json(result);
-  } catch (err) {
-    return res.status(500).json({ errorMessage: "GetLinks controller error" });
-  }
+		const result = await LinkModel.find({
+			userId: res.locals.userId,
+			...searchValue,
+		});
+
+		return res.status(200).json(result);
+	} catch (err) {
+		return res.status(500).json({ errorMessage: 'GetLinks controller error' });
+	}
 };
 
 export default getLinks;
