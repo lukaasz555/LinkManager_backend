@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import authRouter from './app/routes/auth';
 import linksRouter from './app/routes/links';
 import refreshTokenRouter from './app/routes/refreshToken';
+import { testRouter } from './app/routes/test';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -27,6 +28,7 @@ run().catch((e: Error) => console.log(e));
 
 app.use('/api/auth', authRouter);
 app.use('/api/links', linksRouter);
+app.use('/api/test', testRouter);
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
