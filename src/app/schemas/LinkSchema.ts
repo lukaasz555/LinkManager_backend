@@ -8,7 +8,7 @@ export interface ILinkBaseData {
   categoriesIds: number[];
   isFavorite: boolean;
   notes: string | null;
-  userId: number;
+  userId: string;
 }
 
 const schema = new Schema<ILinkBaseData>(
@@ -34,7 +34,7 @@ const schema = new Schema<ILinkBaseData>(
       required: false,
     },
     userId: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
