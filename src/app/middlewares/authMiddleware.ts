@@ -6,4 +6,5 @@ export function authMiddleware(
 	next: NextFunction
 ) {
 	console.log(`authMiddleware: ${req.method} URL: ${req.url}`);
+	next();
 }
