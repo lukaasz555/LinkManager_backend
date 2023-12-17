@@ -8,7 +8,7 @@ import refreshTokenRouter from './app/routes/refreshToken';
 import { testRouter } from './app/routes/test';
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4747;
 
 dotenv.config();
 app.use(cors());
