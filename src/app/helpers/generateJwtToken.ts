@@ -13,6 +13,7 @@ export function generateJwtToken(userId: string, email: string): string {
 		iat: Math.floor(Date.now() / 1000),
 	};
 
-	const jwtToken = jwt.sign(payload, tokenSecret, { expiresIn });
+	// const jwtToken = jwt.sign(payload, tokenSecret, { expiresIn });
+	const jwtToken = jwt.sign(payload, tokenSecret);
 	return jwtToken;
 }
