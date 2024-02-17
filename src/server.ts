@@ -6,6 +6,7 @@ import authRouter from './app/routes/auth';
 import linksRouter from './app/routes/links';
 import refreshTokenRouter from './app/routes/refreshToken';
 import { testRouter } from './app/routes/test';
+import { categoriesRouter } from './app/routes/categories';
 
 const app = express();
 const PORT = process.env.PORT || 4747;
@@ -28,6 +29,7 @@ run().catch((e: Error) => console.log(e));
 
 app.use('/api/auth', authRouter);
 app.use('/api/links', linksRouter);
+app.use('/api/categories', categoriesRouter);
 app.use('/api/test', testRouter);
 
 app.listen(PORT, () => {
