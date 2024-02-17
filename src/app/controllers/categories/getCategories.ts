@@ -14,7 +14,7 @@ export const getCategories = async (req: Request, res: Response) => {
 			userId: res.locals.userId,
 		});
 
-		return res.status(200).json(result);
+		return res.status(200).json(user.categories);
 	} catch (err) {
 		return res
 			.status(500)
