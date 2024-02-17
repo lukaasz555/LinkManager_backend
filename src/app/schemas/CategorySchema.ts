@@ -1,6 +1,8 @@
 // import { Schema, model } from 'mongoose';
 // import { IUserDto } from './UserSchema';
 
+import { Schema, Types, model } from 'mongoose';
+
 // export class CategoryDto {
 // 	id = 0;
 // 	color = '';
@@ -40,3 +42,24 @@
 // });
 
 // export const CategoryModel = model<ICategoryDto>('Category', schema);
+
+const schema = new Schema({
+	name: {
+		type: String,
+		required: true,
+		unique: true,
+	},
+	color: {
+		type: String,
+		required: true,
+		unique: true,
+	},
+	links: [
+		{
+			type: Types.ObjectId,
+			ref: 'Links',
+		},
+	],
+});
+
+export const Category = model('Category', schema);

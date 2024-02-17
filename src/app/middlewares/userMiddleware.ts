@@ -10,6 +10,8 @@ export function userMiddleware(
 	const token =
 		req.headers['authorization'] && req.headers['authorization'].split(' ')[1];
 
+	console.log('userMiddleware headers: ', req.headers);
+
 	if (!userid) {
 		return res
 			.status(400)

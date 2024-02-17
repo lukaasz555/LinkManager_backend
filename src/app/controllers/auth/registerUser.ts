@@ -1,20 +1,26 @@
 import { Request, Response, ErrorRequestHandler } from 'express';
-import UserModel, { IUserDto, UserDto } from '../../schemas/UserSchema';
+import { UserModel } from '../../schemas/UserSchema';
 import { ValidationResult, isObjectValid } from './../../helpers/isObjectValid';
 import { getHashedPassword } from '../../helpers/auth';
 import { MongooseError } from 'mongoose';
+import { UserDto } from './dtos/user.dto';
 
 const registerUser = async (req: Request, res: Response) => {
+	console.log('registerUser');
 	try {
+		console.log('registerUser try');
 		const userDto = new UserDto();
-		const validationResult = isObjectValid<UserDto>(userDto, req.body);
+		const validationResult = isObjectValid(userDto, req.body);
 		if (!validationResult.isValid) {
 			return res.status(400).json({
 				errorMessage: validationResult.text,
 			});
 		}
 
+		console.log('validation ok ');
+
 		const newUser = new UserModel();
+		console.log('newUser: ', newUser);
 		const hashedPassword = await getHashedPassword(req.body.password);
 
 		if (typeof hashedPassword !== 'string') {
@@ -22,6 +28,8 @@ const registerUser = async (req: Request, res: Response) => {
 				.status(500)
 				.json({ errorMessage: 'Hashing password error. Try again.' });
 		}
+
+		console.log('password hashed successfully - user ', newUser);
 
 		Object.assign(newUser, { email: req.body.email, password: hashedPassword });
 		await newUser
@@ -37,6 +45,7 @@ const registerUser = async (req: Request, res: Response) => {
 				}
 			});
 	} catch (e) {
+		console.log('registerUser catch');
 		console.log(e);
 		return res.status(500).json({ errorMessage: 'RegisterUser error' });
 	}

@@ -1,27 +1,7 @@
 import { Schema, Types, model } from 'mongoose';
-import { ICategoryDto } from './CategorySchema';
+import { ILink } from './LinkSchema';
 
-export class UserDto {
-	email = '';
-	password = '';
-}
-
-export interface IUserDto {
-	email: string;
-	password: string;
-	categories: ICategoryDto[];
-	links: ILinkDto[];
-}
-
-export interface ILinkDto {
-	title: string;
-	url: string;
-	category: Types.ObjectId | ICategoryDto;
-	isFavorite?: boolean;
-	notes?: string;
-}
-
-const schema = new Schema<IUserDto>(
+const schema = new Schema(
 	{
 		email: {
 			type: String,
@@ -34,19 +14,51 @@ const schema = new Schema<IUserDto>(
 		},
 		categories: [
 			{
-				type: Schema.Types.ObjectId,
-				ref: 'Category',
+				id: {
+					type: Number,
+					required: true,
+					unique: true,
+				},
+				name: {
+					type: String,
+					required: true,
+					unique: true,
+				},
+				color: {
+					type: String,
+					required: true,
+					unique: true,
+				},
 			},
 		],
 		links: [
 			{
-				type: Schema.Types.ObjectId,
-				ref: 'Link',
+				title: {
+					type: String,
+					required: true,
+					unique: true,
+				},
+				url: {
+					type: String,
+					required: true,
+				},
+				isFavorite: {
+					type: Boolean,
+					required: true,
+				},
+				notes: {
+					type: String,
+					required: false,
+				},
+				categoryId: {
+					type: Number,
+					required: true,
+					unique: false,
+				},
 			},
 		],
 	},
 	{ timestamps: true }
 );
 
-const UserModel = model<IUserDto>('User', schema);
-export default UserModel;
+export const UserModel = model('User', schema);
