@@ -1,54 +1,44 @@
-import { DateTime } from 'luxon';
-import { Link } from '../models/Link';
-import { Schema, model } from 'mongoose';
+// import { DateTime } from 'luxon';
+// import { Link } from '../models/Link';
+// import { Schema, model, Types } from 'mongoose';
 
-export interface ILinkBaseData {
-	title: string;
-	url: string;
-	categoriesIds: number[];
-	isFavorite: boolean;
-	notes: string | null;
-	userId: string;
-}
+// export interface ILinkBaseData {
+// 	title: string;
+// 	url: string;
+// 	category: Types.ObjectId;
+// 	isFavorite: boolean;
+// 	notes: string | null;
+// }
 
-const schema = new Schema<ILinkBaseData>(
-	{
-		title: {
-			type: String,
-			required: true,
-		},
-		url: {
-			type: String,
-			required: true,
-		},
-		// categoriesIds: {
-		//   type: [Number],
-		//   required: true,
-		// },
-		categoriesIds: [
-			{
-				type: Number,
-				ref: 'Category',
-			},
-		],
-		isFavorite: {
-			type: Boolean,
-			required: true,
-		},
-		notes: {
-			type: String,
-			required: false,
-		},
-		userId: {
-			type: String,
-			required: true,
-		},
-	},
+// const schema = new Schema<ILinkBaseData>(
+// 	{
+// 		title: {
+// 			type: String,
+// 			required: true,
+// 		},
+// 		url: {
+// 			type: String,
+// 			required: true,
+// 		},
+// 		category: {
+// 			type: Schema.Types.ObjectId,
+// 			ref: 'Category',
+// 			required: true,
+// 		},
+// 		isFavorite: {
+// 			type: Boolean,
+// 			required: true,
+// 		},
+// 		notes: {
+// 			type: String,
+// 			required: false,
+// 		},
+// 	},
 
-	{
-		timestamps: true,
-	}
-);
+// 	{
+// 		timestamps: true,
+// 	}
+// );
 
-const LinkModel = model<ILinkBaseData>('Link', schema);
-export default LinkModel;
+// const LinkModel = model<ILinkBaseData>('Link', schema);
+// export default LinkModel;
