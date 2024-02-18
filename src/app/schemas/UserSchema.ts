@@ -1,5 +1,4 @@
 import { Schema, Types, model } from 'mongoose';
-import { ILink } from './LinkSchema';
 
 const schema = new Schema(
 	{
@@ -33,6 +32,11 @@ const schema = new Schema(
 		],
 		links: [
 			{
+				id: {
+					type: Number,
+					required: true,
+					unique: true,
+				},
 				title: {
 					type: String,
 					required: true,
