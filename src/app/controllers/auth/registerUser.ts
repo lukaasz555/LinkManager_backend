@@ -6,9 +6,7 @@ import { MongooseError } from 'mongoose';
 import { UserDto } from './dtos/user.dto';
 
 const registerUser = async (req: Request, res: Response) => {
-	console.log('registerUser');
 	try {
-		console.log('registerUser try');
 		const userDto = new UserDto();
 		const validationResult = isObjectValid(userDto, req.body);
 		if (!validationResult.isValid) {
@@ -17,10 +15,7 @@ const registerUser = async (req: Request, res: Response) => {
 			});
 		}
 
-		console.log('validation ok ');
-
 		const newUser = new UserModel();
-		console.log('newUser: ', newUser);
 		const hashedPassword = await getHashedPassword(req.body.password);
 
 		if (typeof hashedPassword !== 'string') {
@@ -28,8 +23,6 @@ const registerUser = async (req: Request, res: Response) => {
 				.status(500)
 				.json({ errorMessage: 'Hashing password error. Try again.' });
 		}
-
-		console.log('password hashed successfully - user ', newUser);
 
 		Object.assign(newUser, { email: req.body.email, password: hashedPassword });
 		await newUser
@@ -45,7 +38,6 @@ const registerUser = async (req: Request, res: Response) => {
 				}
 			});
 	} catch (e) {
-		console.log('registerUser catch');
 		console.log(e);
 		return res.status(500).json({ errorMessage: 'RegisterUser error' });
 	}

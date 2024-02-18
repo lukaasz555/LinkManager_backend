@@ -1,25 +1,33 @@
 import { Request, Response } from 'express';
-import { Category } from '../../schemas/CategorySchema';
 import { MongooseError } from 'mongoose';
 import { UserModel } from '../../schemas/UserSchema';
+import { isObjectValid } from '../../helpers/isObjectValid';
+
+class PostCategoryDto {
+	name = '';
+	color = '';
+}
 
 export const postCategory = async (req: Request, res: Response) => {
 	try {
-		const testCat = {
-			id: 2,
-			name: '#2 React.js',
-			color: '#71DBFB',
-			links: [],
-		};
+		const validationResult = isObjectValid(PostCategoryDto, req.body);
+		if (!validationResult.isValid) {
+			return res.status(400).json({
+				errorMessage: validationResult.text,
+			});
+		}
 
 		const user = await UserModel.findById(res.locals.userId);
-		console.log('finded user (postCategory): ', user);
-
-		if (user) {
-			user.categories.push(testCat);
-			await user.save();
-			return res.status(200).json(user);
+		if (!user) {
+			return res.status(404).json({ errorMessage: 'There is no such a user' });
 		}
+
+		user.categories.push({
+			...req.body,
+			id: user.categories.length++,
+		});
+		await user.save();
+		return res.status(200).json(user);
 	} catch (err) {
 		console.log(err);
 		return res
