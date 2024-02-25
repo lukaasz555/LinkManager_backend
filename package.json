@@ -7,8 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/server.js",
     "build": "npx tsc",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\""
-  },
+    "start:dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\" --env development",
+    "start:prod": "pm2 start ecosystem.config.js --env production"
+ },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -24,7 +25,7 @@
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1"
   },
-  "devDependencies": {
+"devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.15",
     "@types/express": "^4.17.20",
@@ -32,6 +33,8 @@
     "@types/lodash": "^4.14.201",
     "@types/luxon": "^3.3.3",
     "@types/node": "^20.8.10",
-    "typescript": "^5.2.2"
+    "concurrently": "^8.2.2",
+    "typescript": "^5.2.2",
+    "ts-node": "^10.9.1"
   }
 }
