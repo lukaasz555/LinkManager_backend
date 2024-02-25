@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import UserModel from '../../schemas/UserSchema';
+import { UserModel } from '../../schemas/UserSchema';
 import { validatedPassword } from '../../helpers/auth';
 import { generateJwtToken } from '../../helpers/generateJwtToken';
 import { generateRefreshToken } from '../../helpers/generateRefreshToken';

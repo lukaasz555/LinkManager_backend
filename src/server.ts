@@ -4,8 +4,9 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import authRouter from './app/routes/auth';
 import linksRouter from './app/routes/links';
-import refreshTokenRouter from './app/routes/refreshToken';
 import { testRouter } from './app/routes/test';
+import { categoriesRouter } from './app/routes/categories';
+import { cacheMiddleware } from './app/middlewares/cacheMiddleware';
 
 const app = express();
 const PORT = process.env.PORT || 4747;
@@ -26,9 +27,14 @@ async function run() {
 
 run().catch((e: Error) => console.log(e));
 
-app.use('/api/auth', authRouter);
-app.use('/api/links', linksRouter);
-app.use('/api/test', testRouter);
+const apiRouter = express.Router();
+app.use('/api/v1', apiRouter);
+
+apiRouter.use(cacheMiddleware);
+apiRouter.use('/auth', authRouter);
+apiRouter.use('/links', linksRouter);
+apiRouter.use('/categories', categoriesRouter);
+apiRouter.use('/test', testRouter);
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
