@@ -27,11 +27,14 @@ async function run() {
 
 run().catch((e: Error) => console.log(e));
 
-app.use(cacheMiddleware);
-app.use('/api/auth', authRouter);
-app.use('/api/links', linksRouter);
-app.use('/api/categories', categoriesRouter);
-app.use('/api/test', testRouter);
+const apiRouter = express.Router();
+app.use('/api/v1', apiRouter);
+
+apiRouter.use(cacheMiddleware);
+apiRouter.use('/auth', authRouter);
+apiRouter.use('/links', linksRouter);
+apiRouter.use('/categories', categoriesRouter);
+apiRouter.use('/test', testRouter);
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
