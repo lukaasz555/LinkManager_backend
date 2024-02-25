@@ -1,34 +1,27 @@
 import { Request, Response } from 'express';
-import mockLinks from '../../../mockData/links.json';
-import { Link } from '../../models/Link';
-import LinkModel from '../../schemas/LinkSchema';
-import UserModel from '../../schemas/UserSchema';
+import { UserModel } from '../../schemas/UserSchema';
 
-const getLinks = async (req: Request, res: Response) => {
+export const getLinks = async (req: Request, res: Response) => {
 	try {
 		const user = await UserModel.findById(res.locals.userId);
 		if (!user) {
-			return res.status(404).json({ errorMessage: 'No such a user' });
+			return res.status(404).json({ errorMessage: 'There is no such a user' });
 		}
-
-		const searchValue = {};
 
 		if (req.query.categoryId) {
-			Object.assign(searchValue, { categoriesIds: req.query.categoryId });
-		}
-		if (req.query.favorites) {
-			Object.assign(searchValue, { isFavorite: true });
+			if (!isNaN(Number(req.query.categoryId))) {
+				const links = user.links.filter(
+					(link) => link.categoryId == Number(req.query.categoryId)
+				);
+				return res.status(200).json(links);
+			} else {
+				return res.status(400).json({ errorMessage: 'Invalid category ID' });
+			}
 		}
 
-		const result = await LinkModel.find({
-			userId: res.locals.userId,
-			...searchValue,
-		});
-
-		return res.status(200).json(result);
+		return res.status(200).json(user.links);
 	} catch (err) {
+		console.log('err');
 		return res.status(500).json({ errorMessage: 'GetLinks controller error' });
 	}
 };
-
-export default getLinks;

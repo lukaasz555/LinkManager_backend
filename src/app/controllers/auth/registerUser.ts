@@ -1,13 +1,14 @@
 import { Request, Response, ErrorRequestHandler } from 'express';
-import UserModel, { IUserDto, UserDto } from '../../schemas/UserSchema';
+import { UserModel } from '../../schemas/UserSchema';
 import { ValidationResult, isObjectValid } from './../../helpers/isObjectValid';
 import { getHashedPassword } from '../../helpers/auth';
 import { MongooseError } from 'mongoose';
+import { UserDto } from './dtos/user.dto';
 
 const registerUser = async (req: Request, res: Response) => {
 	try {
 		const userDto = new UserDto();
-		const validationResult = isObjectValid<UserDto>(userDto, req.body);
+		const validationResult = isObjectValid(userDto, req.body);
 		if (!validationResult.isValid) {
 			return res.status(400).json({
 				errorMessage: validationResult.text,

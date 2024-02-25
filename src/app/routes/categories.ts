@@ -1,9 +1,14 @@
-import express from 'express';
+import { Router, Request, Response } from 'express';
 import { userMiddleware } from '../middlewares/userMiddleware';
-import { getCategories } from '../controllers/categories/getCategories';
 import { postCategory } from '../controllers/categories/postCategory';
+import { putCategory } from '../controllers/categories/putCategory';
+import { idMiddleware } from '../middlewares/idMiddleware';
+import { deleteCategory } from '../controllers/categories/deleteCategory';
 
-export const categoriesRouter = express.Router();
+export const categoriesRouter = Router();
 
-categoriesRouter.route('/').get(userMiddleware, getCategories);
+categoriesRouter.route('/:id').put(userMiddleware, idMiddleware, putCategory);
+categoriesRouter
+	.route('/:id')
+	.delete(userMiddleware, idMiddleware, deleteCategory);
 categoriesRouter.route('/').post(userMiddleware, postCategory);
