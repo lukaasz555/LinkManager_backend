@@ -18,8 +18,15 @@ export const postCategory = async (req: Request, res: Response) => {
 			...req.body,
 			id: getIncrementedId(user.categories),
 		});
-		await user.save();
-		return res.status(200).json(user);
+
+		try {
+			await user.save();
+			return res.status(200).json(user.categories);
+		} catch (e) {
+			return res.status(500).json({
+				errorMessage: 'PostCategory controller error - db save operation error',
+			});
+		}
 	} catch (err) {
 		console.log(err);
 		return res
