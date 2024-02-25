@@ -12,6 +12,3 @@ categoriesRouter
 	.route('/:id')
 	.delete(userMiddleware, idMiddleware, deleteCategory);
 categoriesRouter.route('/').post(userMiddleware, postCategory);
-categoriesRouter.route('*').all((req: Request, res: Response) => {
-	return res.status(404).json({ errorMessage: "Endpoint doesn't exist" });
-});
