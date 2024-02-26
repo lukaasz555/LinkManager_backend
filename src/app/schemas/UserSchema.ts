@@ -16,7 +16,6 @@ const schema = new Schema(
 				id: {
 					type: Number,
 					required: true,
-					unique: true,
 				},
 				name: {
 					type: String,
@@ -35,12 +34,10 @@ const schema = new Schema(
 				id: {
 					type: Number,
 					required: true,
-					unique: true,
 				},
 				title: {
 					type: String,
 					required: true,
-					unique: true,
 				},
 				url: {
 					type: String,

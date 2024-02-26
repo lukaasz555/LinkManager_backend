@@ -14,10 +14,15 @@ export const postCategory = async (req: Request, res: Response) => {
 			return res.status(404).json({ errorMessage: 'There is no such a user' });
 		}
 
-		user.categories.push({
-			...req.body,
-			id: getIncrementedId(user.categories),
-		});
+		const newCategories = [
+			...user.categories,
+			{
+				...req.body,
+				id: getIncrementedId(user.categories),
+			},
+		];
+
+		user.$set('categories', newCategories);
 
 		try {
 			await user.save();
